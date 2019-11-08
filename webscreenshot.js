@@ -96,6 +96,12 @@ var Page = (function(custom_headers, http_username, http_password, image_width, 
 			document.body.bgColor = 'white';
 		});
 
+		page.clipRect = {
+			top: 0,
+			left: 0,
+			width: opts.width,
+			height: opts.height
+		};
 		page.render(opts.file, {format: opts.format, quality: opts.quality});
 		phantom.exit(0);
 	}
