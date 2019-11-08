@@ -115,6 +115,7 @@ function main() {
 	
 	var system = require('system');
 	var p_url = new RegExp('url_capture=(.*)');
+	var p_encoded_url = new RegExp('encoded_url_capture=(.*)');
 	var p_outfile = new RegExp('output_file=(.*)');
 	var p_header = new RegExp('header=(.*)');
 	
@@ -145,6 +146,11 @@ function main() {
 		if (p_url.test(system.args[i]) === true)
 		{
 			var URL = p_url.exec(system.args[i])[1];
+		}
+
+		if (p_encoded_url.test(system.args[i]) === true)
+		{
+			var URL = decodeURIComponent(atob(p_encoded_url.exec(system.args[i])[1]));
 		}
 		
 		if (p_outfile.test(system.args[i]) === true)
